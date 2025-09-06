@@ -6,7 +6,7 @@
 1. git clone https://github.com/senpai0807/shape-harvester.git
 2. cd shape-harvester
 3. go mod tidy
- 4. go run ./src/main.go
+4. go run ./src/main.go
  ```
 
 - To change browser type, simply go to the main.go and change browserType to Chrome, Edge, or Brave
