@@ -3,7 +3,6 @@ package browser
 import (
 	"context"
 	"fmt"
-	"log"
 	"strings"
 
 	"shape-harvester/src/helpers/requests"
@@ -48,7 +47,7 @@ func RequestPaused(ctx context.Context, ev *fetch.EventRequestPaused, logger *ut
 
 	err := chromedp.Run(ctx, fetch.ContinueRequest(ev.RequestID))
 	if err != nil {
-		log.Printf("❌ Failed to continue request %s: %v", ev.Request.URL, err)
+		logger.Error(fmt.Sprintf("Failed To Continue Request %s: %v", ev.Request.URL, err))
 	}
 }
 
@@ -66,6 +65,6 @@ func ParseHeaders(ctx context.Context, url, method string, headers network.Heade
 	}
 
 	if err := requests.SendHeaders(ctx, fullData, logger); err != nil {
-		log.Printf("Failed To Send Headers To Server: %v", err)
+		logger.Error(fmt.Sprintf("Failed To Send Headers To Server: %v", err)
 	}
 }
